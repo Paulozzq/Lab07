@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Animación de aparición del formulario */
+    @keyframes slide-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .login-form {
+      animation: slide-fade-in 0.5s ease forwards;
+      display: none;
+    }
+    /* Animación del título */
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .title {
+      animation: fade-in 1s ease forwards;
+      display: none;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="title">Sistema de Administración de Datos</h2>
+      <div class="card login-form" id="loginForm">
+        <div class="card-header">
+          <h4>Iniciar Sesión</h4>
+        </div>
+        <div class="card-body">
+          <form action="procesar_inicio_sesion.php" method="POST">
+            <div class="form-group">
+              <label for="usuario">Nombre de Usuario</label>
+              <input type="text" class="form-control" id="usuario" name="usuario" required>
+            </div>
+            <div class="form-group show-password">
+              <label for="contrasena">Contraseña</label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                <div class="input-group-append">
+                  <span class="input-group-text" id="togglePassword">
+                    <i class="fas fa-eye-slash" id="eyeIcon"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS y jQuery (Opcional) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Mostrar título y formulario al cargar la página
+    $('.title').css('display', 'block');
+    $('.login-form').css('display', 'block');
+
+    // Mostrar/ocultar contraseña al hacer clic en el ícono
+    $('#togglePassword').click(function() {
+      var passwordField = $('#contrasena');
+      var eyeIcon = $('#eyeIcon');
+
+      if (passwordField.attr('type') === 'password') {
+        passwordField.attr('type', 'text');
+        eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+      } else {
+        passwordField.attr('type', 'password');
+        eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
