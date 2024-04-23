@@ -20,7 +20,7 @@ if(isset($_POST['Salir'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         section.blog-posts {
-             padding: 20px;
+            padding: 20px;
         }
 
         article {
@@ -65,42 +65,42 @@ if(isset($_POST['Salir'])){
         </nav>
 
         <section class="blog-posts mt-4">
-        <article class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title">Nuevo lanzamiento: Coca-Cola Zero Sugar</h2>
-                <p class="card-text">Descubre nuestro último producto: Coca-Cola Zero Sugar, la misma refrescante Coca-Cola, sin azúcar.</p>
-            </div>
-        </article>
-        <article class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title">Historia de Coca-Cola</h2>
-                <p class="card-text">Conoce la fascinante historia detrás de la marca Coca-Cola, desde sus humildes comienzos hasta convertirse en una de las marcas más reconocidas a nivel mundial.</p>
-            </div>
-        </article>
-        <article class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title">Receta de cóctel: Coca-Cola con limón</h2>
-                <p class="card-text">¡Aprende a preparar un delicioso cóctel con Coca-Cola y limón para sorprender a tus amigos en tu próxima reunión!</p>
-            </div>
-        </article>
-        <article class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title">Beneficios de Coca-Cola Light</h2>
-                <p class="card-text">Descubre los beneficios de Coca-Cola Light y por qué es la elección perfecta para aquellos que buscan una opción baja en calorías.</p>
-            </div>
-        </article>
-        <article class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title">Impacto ambiental de Coca-Cola</h2>
-                <p class="card-text">Conoce las iniciativas de sostenibilidad de Coca-Cola y nuestro compromiso con el medio ambiente.</p>
-            </div>
-        </article>
-        <article class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title">Top 10 anuncios memorables de Coca-Cola</h2>
-                <p class="card-text">Revive los anuncios más icónicos de Coca-Cola que han dejado una huella en la cultura popular.</p>
-            </div>
-        </article>
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Nuevo lanzamiento: Coca-Cola Zero Sugar</h2>
+                    <p class="card-text">Descubre nuestro último producto: Coca-Cola Zero Sugar, la misma refrescante Coca-Cola, sin azúcar.</p>
+                </div>
+            </article>
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Historia de Coca-Cola</h2>
+                    <p class="card-text">Conoce la fascinante historia detrás de la marca Coca-Cola, desde sus humildes comienzos hasta convertirse en una de las marcas más reconocidas a nivel mundial.</p>
+                </div>
+            </article>
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Receta de cóctel: Coca-Cola con limón</h2>
+                    <p class="card-text">¡Aprende a preparar un delicioso cóctel con Coca-Cola y limón para sorprender a tus amigos en tu próxima reunión!</p>
+                </div>
+            </article>
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Beneficios de Coca-Cola Light</h2>
+                    <p class="card-text">Descubre los beneficios de Coca-Cola Light y por qué es la elección perfecta para aquellos que buscan una opción baja en calorías.</p>
+                </div>
+            </article>
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Impacto ambiental de Coca-Cola</h2>
+                    <p class="card-text">Conoce las iniciativas de sostenibilidad de Coca-Cola y nuestro compromiso con el medio ambiente.</p>
+                </div>
+            </article>
+            <article class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Top 10 anuncios memorables de Coca-Cola</h2>
+                    <p class="card-text">Revive los anuncios más icónicos de Coca-Cola que han dejado una huella en la cultura popular.</p>
+                </div>
+            </article>
         </section>
 
         <footer class="bg-dark text-white text-center py-3 mt-5">
