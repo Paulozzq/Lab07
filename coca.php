@@ -17,28 +17,33 @@ if(isset($_POST['salir'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido <?php $_SESSION['usuario'] ?> </title>
+   
 </head>
 <body>
 <div class="container">
-        <h1>Bienvenido <?php echo $_SESSION['usuario']; ?> </h1>
+<script>
 
-        <form method="post">
-            <input type="submit" value="Salir" name="salir" class="logout-button">
-        </form>
-    </div>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog de Coca-Cola</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        var usuario = "<?php echo $_SESSION['usuario']; ?>";
+        
+      
+        alert("Bienvenido " + usuario);
+    });
+</script>
 <style>
  
+ .logo-container {
+    display: flex;
+    justify-content: center;
+}
 
+
+     
+        .header-logo {
+            width: 150px; 
+            height: auto;
+        }
 
 header, nav, footer {
     background-color: #dc143c; 
@@ -113,21 +118,43 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
 }
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+        
+      
+        header h1 {
+            font-family: 'Lobster', cursive;
+        }
 
+  .container-usuario{
+    display: flex;
+    justify-content:flex-end;
+  }      
 
 </style>
-
+</div>
 <body>
+
+<div class="logo-container">
+        <img src="img/fcc.png" alt="Logo de Coca-Cola" class="header-logo">
+    </div>
+</header>   
     <header>
         <h1>Blog de Coca-Cola</h1>
+
+        <div class="container-usuario">
+    <h1>Cuenta de  <?php echo $_SESSION['usuario']; ?> </h1>
+
+   
+</div>
     </header>
+
 
     <nav>
         <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Sobre nosotros</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="https://www.coca-colacompany.com/about-us">Inicio</a></li>
+            <li><a href="https://www.coca-cola.com/pe/es/brands/coca-cola">Sobre nosotros</a></li>
+            <li><a href="https://www.entuhogar.coca-cola.com.co/productos">Productos</a></li>
+            <li><a href="https://www.coca-colacompany.com/about-us/contact-us">Contacto</a></li>
         </ul>
     </nav>
 
@@ -165,6 +192,10 @@ h1 {
 
     <footer>
         <p>&copy; 2024 Blog de Coca-Cola</p>
+
+        <form method="post">
+        <input type="submit" value="Salir" name="salir" class="logout-button">
+    </form>
     </footer>
 </body>
 </html>

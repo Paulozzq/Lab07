@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesión</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     @keyframes slide-fade-in {
@@ -22,7 +21,7 @@
       animation: slide-fade-in 0.5s ease forwards;
       display: none;
     }
-    /* Animación del título */
+
     @keyframes fade-in {
       from {
         opacity: 0;
@@ -77,7 +76,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Font Awesome -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -100,78 +98,4 @@
 </script>
 
 </body>
-<?php
-// Incluye la clase Database
-require_once 'ruta/donde/se/encuentra/Database.php';
-
-// Crear una instancia de la clase Database
-$db = new Database();
-
-// Conexión a la base de datos
-$db->conectar();
-
-// Procesar los formularios si se envían
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["submit_insertar"])) {
-        // Procesar formulario de inserción
-        $nombre = $_POST["nombre"];
-        $apellido = $_POST["apellido"];
-        $edad = $_POST["edad"];
-        $dni = $_POST["dni"];
-        $numero = $_POST["numero"];
-        $correo = $_POST["correo"];
-        $administrador = $_POST["administrador"];
-        $nombre_usuario = $_POST["nombre_usuario"];
-        $pass = $_POST["pass"];
-        
-        $db->insertarUsuario($nombre, $apellido, $edad, $dni, $numero, $correo, $administrador, $nombre_usuario, $pass);
-    } elseif (isset($_POST["submit_eliminar"])) {
-        // Procesar formulario de eliminación
-        $id = $_POST["id"];
-        $db->eliminarUsuario($id);
-    }
-}
-
-// Obtener todos los usuarios
-$usuarios = $db->obtenerUsuarios();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD de Usuarios</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>CRUD de Usuarios</h1>
-
-    <!-- Formulario de inserción -->
-    <h2>Insertar Usuario</h2>
-    <form method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required><br>
-        <!-- Resto de campos aquí -->
-        <input type="submit" name="submit_insertar" value="Insertar">
-    </form>
-
-    <!-- Lista de usuarios -->
-    <h2>Lista de Usuarios</h2>
-    <ul>
-        <?php foreach ($usuarios as $usuario): ?>
-            <li>
-                <?php echo $usuario['nombre']; ?> -
-                <?php echo $usuario['apellido']; ?> -
-                <?php echo $usuario['edad']; ?> años
-                <!-- Resto de campos aquí -->
-                <form method="post" style="display:inline;">
-                    <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
-                    <input type="submit" name="submit_eliminar" value="Eliminar">
-                </form>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</body>
-</html>
 
