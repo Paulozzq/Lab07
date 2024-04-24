@@ -55,6 +55,7 @@ if (isset($_POST['crear'])){
     $dni = $_POST['dni'];
     if (strlen($dni) != 8) {
         echo "<script>alert('El DNI debe tener exactamente 8 dígitos.');</script>";
+        header("Location: crud.php");
         exit;
     }
     if ($dni < 0) {
@@ -72,6 +73,7 @@ if (isset($_POST['crear'])){
 
     if (strlen($numero) != 9) {
         echo "<script>alert('El número debe tener exactamente 9 dígitos.');</script>";
+        header("Location: crud.php");
         exit;
     }
     $correo = $_POST['correo'];
@@ -80,6 +82,7 @@ if (isset($_POST['crear'])){
     $pass = $_POST['pass'];
     if (strlen($pass) < 8) {
         echo "<script>alert('La contraseña debe tener al menos 8 caracteres.');</script>";
+        header("Location: crud.php");
         exit;
     }
     $pass_hash = hash('sha256', $pass);
