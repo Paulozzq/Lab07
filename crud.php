@@ -41,12 +41,14 @@ if (isset($_POST['crear'])){
     $apellido = $_POST['apellido'];
     if (strlen($apellido) > 50) {
         echo "<script>alert('El apellido debe tener menos de 50 caracteres.');</script>";
+        header("Location: crud.php");
         exit;
     }
 
     $edad = $_POST['edad'];
     if ($edad < 10 || $edad > 120) {
         echo "<script>alert('La edad debe estar entre 18 y 120 años.');</script>";
+        header("Location: crud.php");
         exit;
     }
     
@@ -57,12 +59,14 @@ if (isset($_POST['crear'])){
     }
     if ($dni < 0) {
         echo "<script>alert('El dni no puede ser negativo.');</script>";
+        header("Location: crud.php");
         exit;
     }
 
     $numero = $_POST['numero'];
     if ($numero < 0) {
         echo "<script>alert('El número no puede ser negativo.');</script>";
+        header("Location: crud.php");
         exit;
     }
 
