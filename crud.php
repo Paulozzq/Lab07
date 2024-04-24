@@ -108,7 +108,7 @@ if (isset($_POST['crear'])){
     $administrador = $_POST['administrador'];
     $nombre_usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
-    if (strlen($pass) > 8) {
+    if (strlen($pass) > 8){
         echo "<script>
                 var confirmation = confirm('La contraseña debe tener hasta 8 caracteres.');
                 if (confirmation) {
@@ -116,14 +116,6 @@ if (isset($_POST['crear'])){
                 }
               </script>";
         exit;
-    }
-    if ($pass !== $conf_pass){
-        echo "<script>
-                var confirmation = confirm('La contraseña no coincide .');
-                if (confirmation) {
-                    window.location.href = 'crud.php';
-                }
-              </script>";
     }
     $pass_hash = hash('sha256', $pass);
     $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
