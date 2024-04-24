@@ -26,11 +26,11 @@ if (isset($_POST['eliminar_id'])) {
     header("Location: {$_SERVER['PHP_SELF']}");
     exit;
 }
-
 if (isset($_POST['crear'])){
     require 'config/database.php';
     $db = new Database();
     $con = $db->conectar();
+    $conf_pass = $_POST['conf_pass'];
     $nombre = $_POST['nombre'];
     if (strlen($nombre) > 50) {
          echo "<script>
@@ -116,6 +116,14 @@ if (isset($_POST['crear'])){
                 }
               </script>";
         exit;
+    }
+    if ($conf_pass !== $pass){
+        echo "<script>
+                var confirmation = confirm('La contraseña no coincide .');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
     }
     $pass_hash = hash('sha256', $pass);
     $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -334,6 +342,10 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                         <div class="form-group">
                             <label for="contraseña">Contraseña:</label>
                             <input type="password" class="form-control" id="password" name="pass" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="conf_pass" required>
                         </div>
                         <div class="form-group">
                             <label for="administrador">Rol:</label>
