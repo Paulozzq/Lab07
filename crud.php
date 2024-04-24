@@ -32,8 +32,20 @@ if (isset($_POST['crear'])){
     $db = new Database();
     $con = $db->conectar();
     $nombre = $_POST['nombre'];
+    if (strlen($nombre) > 50) {
+        echo "El nombre debe tener menos de 50 caracteres.";
+        exit;
+    }
     $apellido = $_POST['apellido'];
+    if (strlen($apellido) > 50) {
+            echo "El apellido debe tener menos de 50 caracteres.";
+            exit;
+    }
     $edad = $_POST['edad'];
+    if ($edad < 18 || $edad > 120) {
+            echo "La edad debe estar entre 18 y 120 años.";
+            exit;
+    }
     $dni = $_POST['dni'];
     $numero = $_POST['numero'];
     $correo = $_POST['correo'];
