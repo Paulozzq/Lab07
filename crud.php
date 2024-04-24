@@ -12,6 +12,16 @@ if (isset($_POST['salir'])) {
     header("Location: index.html");
     exit;
 }
+if (isset($_POST['eliminar_id'])) {
+    require 'config/database.php';
+    $db = new Database();
+    $con = $db->conectar();
+    $id = $_POST['eliminar_id'];
+    $query = $con->prepare("DELETE FROM usuario WHERE id = ?");
+    $query->execute([$id]);
+    header("Location: {$_SERVER['PHP_SELF']}");
+    exit;
+}
 require 'config/database.php';
 $db = new Database();
 $con = $db->conectar();
@@ -127,7 +137,10 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $registro['correo']; ?></td>
                             <td><?php echo $registro['administrador'] == 1 ? 'Admin' : 'User'; ?></td>
                             <td>
-                                <a href="<?php echo $registro['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?')">Eliminar</a>
+                                <form action="" method="post">
+                                    <input type="hidden" name="eliminar_id" value="<?php echo $registro['id']; ?>">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?')">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                         <?php endforeach; ?>
