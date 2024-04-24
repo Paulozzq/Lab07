@@ -34,6 +34,7 @@ if (isset($_POST['crear'])){
     $nombre = $_POST['nombre'];
     if (strlen($nombre) > 50) {
          echo "<script>alert('El nombre debe tener menos de 50 caracteres.');</script>";
+         header("Location: crud.php");
          exit;
     }
 
