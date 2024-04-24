@@ -20,15 +20,83 @@ if (isset($_POST['editar_id'])) {
     $registro = $query->fetch(PDO::FETCH_ASSOC);
 }
 if (isset($_POST['editar'])) {
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $edad = $_POST['edad'];
-    $dni = $_POST['dni'];
-    $numero = $_POST['numero'];
     $correo = $_POST['correo'];
     $administrador = $_POST['administrador'];
     $nombre_usuario = $_POST['usuario'];
+    $nombre = $_POST['nombre'];
+    if (strlen($nombre) > 50) {
+        echo "<script>
+                var confirmation = confirm('El nombre debe tener menos de 50 caracteres.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
+
+    $apellido = $_POST['apellido'];
+    if (strlen($apellido) > 50) {
+        echo "<script>
+                var confirmation = confirm('El apellido debe tener menos de 50 caracteres.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
+
+    $edad = $_POST['edad'];
+    if ($edad < 10 || $edad > 120) {
+        echo "<script>
+                var confirmation = confirm('La edad debe estar entre 18 y 120 años.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
+
+    $dni = $_POST['dni'];
+    if ($dni < 0) {
+        echo "<script>
+                var confirmation = confirm('El DNI no puede ser negativo.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
+    if (strlen($dni) != 8) {
+        echo "<script>
+                var confirmation = confirm('El DNI debe tener exactamente 8 dígitos.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
+
+    $numero = $_POST['numero'];
+    if ($numero < 0 || strlen($numero) != 9) {
+        echo "<script>
+                var confirmation = confirm('El número no puede ser negativo y debe tener exactamente 9 dígitos.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
+
     $pass = $_POST['pass'];
+    if (strlen($pass) < 8) {
+        echo "<script>
+                var confirmation = confirm('La contraseña debe tener al menos 8 caracteres.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
+    }
     $pass_hash = hash('sha256', $pass);
    
     $query = $con->prepare("UPDATE usuario SET nombre = ?, apellido = ?, edad = ?, DNI = ?, numero = ?, correo = ?, administrador = ?, nombre_usuario = ?, pass = ? WHERE id = ?");
