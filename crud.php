@@ -33,47 +33,75 @@ if (isset($_POST['crear'])){
     $con = $db->conectar();
     $nombre = $_POST['nombre'];
     if (strlen($nombre) > 50) {
-         echo "<script>alert('El nombre debe tener menos de 50 caracteres.');</script>";
-         header("Location: crud.php");
+         echo "<script>
+                var confirmation = confirm('El nombre debe tener menos de 50 caracteres.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
          exit;
     }
 
     $apellido = $_POST['apellido'];
     if (strlen($apellido) > 50) {
-        echo "<script>alert('El apellido debe tener menos de 50 caracteres.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('El apellido debe tener menos de 50 caracteres.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
 
     $edad = $_POST['edad'];
     if ($edad < 10 || $edad > 120) {
-        echo "<script>alert('La edad debe estar entre 18 y 120 años.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('La edad debe estar entre 18 y 120 años.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
     
     $dni = $_POST['dni'];
     if (strlen($dni) != 8) {
-        echo "<script>alert('El DNI debe tener exactamente 8 dígitos.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('El DNI debe tener exactamente 8 dígitos.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
     if ($dni < 0) {
-        echo "<script>alert('El dni no puede ser negativo.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('El DNI no puede ser negativo.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
 
     $numero = $_POST['numero'];
     if ($numero < 0) {
-        echo "<script>alert('El número no puede ser negativo.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('El número no puede ser negativo y debe tener exactamente 9 dígitos.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
 
     if (strlen($numero) != 9) {
-        echo "<script>alert('El número debe tener exactamente 9 dígitos.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('El número no puede ser negativo y debe tener exactamente 9 dígitos.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
     $correo = $_POST['correo'];
@@ -81,8 +109,12 @@ if (isset($_POST['crear'])){
     $nombre_usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
     if (strlen($pass) < 8) {
-        echo "<script>alert('La contraseña debe tener al menos 8 caracteres.');</script>";
-        header("Location: crud.php");
+        echo "<script>
+                var confirmation = confirm('La contraseña debe tener al menos 8 caracteres.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
         exit;
     }
     $pass_hash = hash('sha256', $pass);
