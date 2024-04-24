@@ -34,8 +34,8 @@ if (isset($_POST['crear'])){
     $correo = $_POST['correo'];
     $administrador = $_POST['administrador'];
     $nombre_usuario = $_POST['usuario'];
-    $id = $_POST['crear'];
-    $pass_hash = hash('sha256', $dni);
+    $pass = $_POST['pass'];
+    $pass_hash = hash('sha256', $pass);
     $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $query->execute([$nombre, $apellido, $edad, $dni, $numero, $correo, $administrador, $nombre_usuario,$pass_hash]);
     header("Location: {$_SERVER['PHP_SELF']}");
@@ -217,12 +217,12 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                     <h2>Crear Nuevo Registro</h2>
                     <form action="?accion=crear" method="post">
                         <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <label for="nombre_u">Nombre de usuario:</label>
+                            <input type="text" class="form-control" id="nombre_u" name="usuario" required>
                         </div>
                         <div class="form-group">
-                            <label for="nombre">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="nombre" name="usuario" required>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="apellido">Apellido:</label>
@@ -243,6 +243,10 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                         <div class="form-group">
                             <label for="correo">Correo:</label>
                             <input type="email" class="form-control" id="correo" name="correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="pass" required>
                         </div>
                         <div class="form-group">
                             <label for="administrador">Rol:</label>
