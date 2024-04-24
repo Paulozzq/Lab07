@@ -108,9 +108,9 @@ if (isset($_POST['crear'])){
     $administrador = $_POST['administrador'];
     $nombre_usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
-    if (strlen($pass) < 8) {
+    if (strlen($pass) > 8) {
         echo "<script>
-                var confirmation = confirm('La contraseña debe tener al menos 8 caracteres.');
+                var confirmation = confirm('La contraseña debe tener hasta 8 caracteres.');
                 if (confirmation) {
                     window.location.href = 'crud.php';
                 }
