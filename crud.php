@@ -22,6 +22,7 @@ if (isset($_POST['eliminar_id'])) {
     header("Location: {$_SERVER['PHP_SELF']}");
     exit;
 }
+
 if (isset($_POST['crear'])){
     require 'config/database.php';
     $db = new Database();
@@ -200,7 +201,11 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $registro['correo']; ?></td>
                             <td><?php echo $registro['administrador'] == 1 ? 'Admin' : 'User'; ?></td>
                             <td>
-                                <a href="<?php echo $registro['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
+                            <td>
+                                <form action="editar.php" method="post">
+                                    <input type="hidden" name="editar_id" value="<?php echo $registro['id']; ?>">
+                                    <button type="submit" class="btn btn-sm btn-primary">Editar</button>
+                                </form>
                             </td>
                         </tr>
                         <?php endforeach; ?>
