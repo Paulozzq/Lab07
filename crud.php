@@ -22,6 +22,25 @@ if (isset($_POST['eliminar_id'])) {
     header("Location: {$_SERVER['PHP_SELF']}");
     exit;
 }
+if (isset($_POST['crear'])){
+    require 'config/database.php';
+    $db = new Database();
+    $con = $db->conectar();
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $edad = $_POST['edad'];
+    $dni = $_POST['dni'];
+    $numero = $_POST['numero'];
+    $correo = $_POST['correo'];
+    $administrador = $_POST['administrador'];
+    $nombre_usuario = $_POST['usuario'];
+    $id = $_POST['crear'];
+    $pass_hash = hash('sha256', $dni);
+    $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $query->execute([$nombre, $apellido, $edad, $dni, $numero, $correo, $administrador, $nombre_usuario,$pass_hash]);
+    header("Location: {$_SERVER['PHP_SELF']}");
+    exit;
+}
 require 'config/database.php';
 $db = new Database();
 $con = $db->conectar();
@@ -202,6 +221,10 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
                         <div class="form-group">
+                            <label for="nombre">Nombre de usuario:</label>
+                            <input type="text" class="form-control" id="nombre" name="usuario" required>
+                        </div>
+                        <div class="form-group">
                             <label for="apellido">Apellido:</label>
                             <input type="text" class="form-control" id="apellido" name="apellido" required>
                         </div>
@@ -228,7 +251,7 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                                 <option value="0">User</option>
                             </select>
                 </div>
-            <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-sm btn-danger" name="crear" onclick="return confirm('¿Estás seguro de que deseas crear este registro?')">Crear</button>
         </form>
         <?php
         }
