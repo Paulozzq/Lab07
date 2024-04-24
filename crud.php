@@ -117,7 +117,7 @@ if (isset($_POST['crear'])){
               </script>";
         exit;
     }
-    if ($conf_pass !== $pass){
+    if ($pass !== $conf_pass){
         echo "<script>
                 var confirmation = confirm('La contraseña no coincide .');
                 if (confirmation) {
