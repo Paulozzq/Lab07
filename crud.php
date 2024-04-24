@@ -33,25 +33,50 @@ if (isset($_POST['crear'])){
     $con = $db->conectar();
     $nombre = $_POST['nombre'];
     if (strlen($nombre) > 50) {
-        echo "El nombre debe tener menos de 50 caracteres.";
-        exit;
+         echo "<script>alert('El nombre debe tener menos de 50 caracteres.');</script>";
+         exit;
     }
+
     $apellido = $_POST['apellido'];
     if (strlen($apellido) > 50) {
-            echo "El apellido debe tener menos de 50 caracteres.";
-            exit;
+        echo "<script>alert('El apellido debe tener menos de 50 caracteres.');</script>";
+        exit;
     }
+
     $edad = $_POST['edad'];
-    if ($edad < 18 || $edad > 120) {
-            echo "La edad debe estar entre 18 y 120 años.";
-            exit;
+    if ($edad < 10 || $edad > 120) {
+        echo "<script>alert('La edad debe estar entre 18 y 120 años.');</script>";
+        exit;
     }
+    
     $dni = $_POST['dni'];
+    if (strlen($dni) != 8) {
+        echo "<script>alert('El DNI debe tener exactamente 8 dígitos.');</script>";
+        exit;
+    }
+    if ($dni < 0) {
+        echo "<script>alert('El dni no puede ser negativo.');</script>";
+        exit;
+    }
+
     $numero = $_POST['numero'];
+    if ($numero < 0) {
+        echo "<script>alert('El número no puede ser negativo.');</script>";
+        exit;
+    }
+
+    if (strlen($numero) != 9) {
+        echo "<script>alert('El número debe tener exactamente 9 dígitos.');</script>";
+        exit;
+    }
     $correo = $_POST['correo'];
     $administrador = $_POST['administrador'];
     $nombre_usuario = $_POST['usuario'];
     $pass = $_POST['pass'];
+    if (strlen($pass) < 8) {
+        echo "<script>alert('La contraseña debe tener al menos 8 caracteres.');</script>";
+        exit;
+    }
     $pass_hash = hash('sha256', $pass);
     $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $query->execute([$nombre, $apellido, $edad, $dni, $numero, $correo, $administrador, $nombre_usuario,$pass_hash]);
