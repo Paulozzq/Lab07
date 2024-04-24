@@ -1,9 +1,9 @@
 <?php
 class Database{
     private $hostname='localhost';
-    private $database='lab07';
-    private $username='root';
-    private $password='';
+    private $database='u217164284_lab07';
+    private $username='u217164284_root';
+    private $password='Paulosin1';
     private $pdo; // Propiedad para almacenar la instancia de PDO
     
     function conectar(){
