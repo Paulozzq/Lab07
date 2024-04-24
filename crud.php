@@ -326,31 +326,6 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                 inputField.classList.add('is-invalid');
             }
         });
-        document.getElementById('edad').addEventListener('input', function() {
-            var numero = this.value.trim();
-            var regex = /^\d{9}$/;
-            var isValid = regex.test(edad);
-            var inputField = this;
-            
-            if (isValid) {
-                inputField.classList.remove('is-invalid');
-            } else {
-                inputField.classList.add('is-invalid');
-            }
-        });
-
-        document.getElementById('dni').addEventListener('input', function() {
-            var numero = this.value.trim();
-            var regex = /^\d{9}$/;
-            var isValid = regex.test(dni);
-            var inputField = this;
-            
-            if (isValid) {
-                inputField.classList.remove('is-invalid');
-            } else {
-                inputField.classList.add('is-invalid');
-            }
-        });
     </script>
 </body>
 </html>
