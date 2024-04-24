@@ -7,6 +7,11 @@ if (empty($_SESSION['usuario'])) {
     header("Location: index.html");
     exit;
 }
+if ($_SESSION['administrador'] != 1) {
+    // Si el usuario no es un administrador, redirigir a una página de acceso denegado
+    header("Location: coca.php");
+    exit;
+}
 $registro = [];
 if (isset($_POST['editar_id'])) {
     $id = $_POST['editar_id'];
@@ -95,5 +100,84 @@ if (isset($_POST['editar'])) {
                 <br>
                 <a href="crud.php" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas regresar?')">Regresar</a>
             </div>
+            <script>
+        document.getElementById('nombre_u').addEventListener('input', function() {
+            var username = this.value.trim();
+            var regex = /^[a-zA-Z0-9_-]+$/;
+            var isValid = regex.test(username);
+            var feedback = document.getElementById('usernameHelpBlock');
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+                feedback.innerText = 'Se permiten letras, números, _ y -';
+            } else {
+                inputField.classList.add('is-invalid');
+                feedback.innerText = 'Por favor, ingrese un nombre de usuario válido.';
+            }
+        });
+        document.getElementById('nombre').addEventListener('input', function() {
+            var name = this.value.trim();
+            var regex = /^[a-zA-Z\s]*$/;
+            var isValid = regex.test(name);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+        document.getElementById('apellido').addEventListener('input', function() {
+            var apellido = this.value.trim();
+            var regex = /^[a-zA-Z\s]*$/;
+            var isValid = regex.test(apellido);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+        document.getElementById('numero').addEventListener('input', function() {
+            var numero = this.value.trim();
+            var regex = /^\d{9}$/;
+            var isValid = regex.test(numero);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+        document.getElementById('edad').addEventListener('input', function() {
+            var numero = this.value.trim();
+            var regex = /^\d{9}$/;
+            var isValid = regex.test(edad);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+
+        document.getElementById('dni').addEventListener('input', function() {
+            var numero = this.value.trim();
+            var regex = /^\d{9}$/;
+            var isValid = regex.test(dni);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+
+    </script>
         </body>
 </html>

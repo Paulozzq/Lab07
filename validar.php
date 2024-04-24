@@ -4,7 +4,6 @@ if(empty($_SESSION['usuario'])) {
     header("Location: index.html");
     exit;
 }
-
 if(isset($_POST['salir'])){
     session_destroy();
     header("Location: index.html");

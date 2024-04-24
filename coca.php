@@ -60,6 +60,15 @@ if(isset($_POST['Salir'])){
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.coca-colacompany.com/about-us/contact-us">Contacto</a>
                     </li>
+                    <?php
+                    if ($_SESSION['administrador'] == 1){
+                    ?>
+                    <li>
+                        <a class="nav-link" href="crud.php">CRUD</a>
+                    </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </nav>
