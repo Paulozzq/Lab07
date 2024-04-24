@@ -3,7 +3,7 @@ class Database{
     private $hostname='localhost';
     private $database='u217164284_lab07';
     private $username='u217164284_root';
-    private $password='Pauosin1';
+    private $password='Paulosin1';
     private $pdo; // Propiedad para almacenar la instancia de PDO
     
     function conectar(){
