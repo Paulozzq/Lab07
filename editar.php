@@ -65,7 +65,7 @@ if (isset($_POST['editar'])) {
                         </div>
                         <div class="form-group">
                             <label for="numero">Número:</label>
-                            <input type="text" class="form-control" id="numero" name="numero" value="<?php echo $registro['numero']; ?>" required>
+                            <input type="number" class="form-control" id="numero" name="numero" value="<?php echo $registro['numero']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="edad">Edad:</label>
@@ -73,7 +73,7 @@ if (isset($_POST['editar'])) {
                         </div>
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $registro['DNI']; ?>" required>
+                            <input type="number" class="form-control" id="dni" name="dni" value="<?php echo $registro['DNI']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
@@ -92,6 +92,8 @@ if (isset($_POST['editar'])) {
                 </div>
                 <button type="submit" class="btn btn-sm btn-danger" name="editar" onclick="return confirm('¿Estás seguro de que deseas editar este registro?')">Editar</button>
                 </form>
+                <br>
+                <a href="crud.php" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que deseas regresar?')">Regresar</a>
             </div>
         </body>
 </html>

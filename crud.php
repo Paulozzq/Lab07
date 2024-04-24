@@ -235,7 +235,7 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="form-group">
                             <label for="numero">Número:</label>
-                            <input type="text" class="form-control" id="numero" name="numero" required>
+                            <input type="number" class="form-control" id="numero" name="numero" required>
                         </div>
                         <div class="form-group">
                             <label for="edad">Edad:</label>
@@ -243,7 +243,7 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <input type="text" class="form-control" id="dni" name="dni" required>
+                            <input type="number" class="form-control" id="dni" name="dni" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
