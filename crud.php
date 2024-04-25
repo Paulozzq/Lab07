@@ -125,6 +125,7 @@ if (isset($_POST['crear'])){
                 }
               </script>";
         exit;
+    }
     $pass_hash = hash('sha256', $pass);
     $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $query->execute([$nombre, $apellido, $edad, $dni, $numero, $correo, $administrador, $nombre_usuario,$pass_hash]);
