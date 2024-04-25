@@ -30,7 +30,6 @@ if (isset($_POST['crear'])){
     require 'config/database.php';
     $db = new Database();
     $con = $db->conectar();
-    $conf_pass = $_POST['conf_pass'];
     $nombre = $_POST['nombre'];
     if (strlen($nombre) > 50) {
          echo "<script>
@@ -107,6 +106,7 @@ if (isset($_POST['crear'])){
     $correo = $_POST['correo'];
     $administrador = $_POST['administrador'];
     $nombre_usuario = $_POST['usuario'];
+    $conf_pass = $_POST['conf_pass'];
     $pass = $_POST['pass'];
     if (strlen($pass) > 8){
         echo "<script>
@@ -117,6 +117,14 @@ if (isset($_POST['crear'])){
               </script>";
         exit;
     }
+    if ($conf_pass !== $pass){
+        echo "<script>
+                var confirmation = confirm('La contraseña no coincide.');
+                if (confirmation) {
+                    window.location.href = 'crud.php';
+                }
+              </script>";
+        exit;
     $pass_hash = hash('sha256', $pass);
     $query = $con->prepare("INSERT INTO usuario (nombre, apellido, edad, DNI, numero, correo, administrador, nombre_usuario, pass) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $query->execute([$nombre, $apellido, $edad, $dni, $numero, $correo, $administrador, $nombre_usuario,$pass_hash]);
